@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-width: 320px;
+  min-height: 100vh;
+  scrollbar-width: none;
+  background-color: "#F7F7F7";
+  /* background-color: gray; */
+}
+/* For WebKit browsers like Chrome, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fc9d45;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fc9d45;
+}
+::selection {
+  background-color: #fc9d45;
+  color: white;
+}
+/* For WebKit based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 0; /* Adjust the width of the scrollbar */
+  background-color: #fc9d45; /* Set the background color of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fc9d45; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Adjust the border radius of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fc9d45; /* Set the color of the scrollbar thumb on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+  scrollbar-color: #fc9d45 #f5f5f5; /* Set the color of the scrollbar thumb and track */
+}
