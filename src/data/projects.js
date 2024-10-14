@@ -36,7 +36,7 @@ const projects = [
   },
   {
     title: "Budget Management System",
-    description: "A system for tracking and managing personal budgets.",
+    description: "Tracking and managing personal budgets.",
     image: budget, // Correct
     demoLink: "https://budget-management-system-seven.vercel.app/",
     githubLink: "https://github.com/your-username/budget-management-system",

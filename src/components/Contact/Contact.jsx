@@ -43,7 +43,10 @@ export const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center items-center py-12 bg-gray-100 flex-col">
+    <div
+      id="connect-section"
+      className="flex justify-center items-center py-12 bg-gray-100 flex-col"
+    >
       <UnderlinedText>
         <h1 className="text-[40px]" style={{ letterSpacing: "4px" }}>
           Contact Me
@@ -52,7 +55,7 @@ export const Contact = () => {
 
       <div className="flex md:flex-row-reverse flex-col-reverse justify-between flex-1 md:px-4 px-2 space-y-8 md:space-y-0">
         {/* Form Section */}
-        <div className="md:w-1/2 w-full bg-white p-4 rounded-lg shadow-lg">
+        <div className="md:w-1/2 w-full  p-4 rounded-lg shadow-lg">
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
             <div>
               <label className="block text-gray-700 font-medium text-xl mb-2">
@@ -149,7 +152,7 @@ export const Contact = () => {
           href="https://www.facebook.com/eng.3limoddd?mibextid=ZbWKwL"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-orange-500 transform hover:scale-110 transition duration-300"
+          className="text-gray-600 hover:text-orange-500 transform hover:scale-110 transition duration-300 cursor-pointer"
         >
           <FaFacebookF size={30} />
         </a>
@@ -196,6 +199,18 @@ export const Contact = () => {
         >
           <RiWhatsappFill size={30} />
         </a>
+      </div>
+      <div className="flex justify-center items-center flex-wrap ">
+        <h1 className="text-2xl font-bold p-1 max-w-62 mt-8 flex justify-start items-center text-primary">
+          Made By{" "}
+          <strong
+            className="ms-4 text-3xl"
+            style={{ fontFamily: "'Qwitcher Grypen', cursive" }}
+          >
+            {" "}
+            Eng.Ali Mohammad
+          </strong>{" "}
+        </h1>
       </div>
     </div>
   );

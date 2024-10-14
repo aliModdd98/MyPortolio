@@ -51,14 +51,14 @@ const Skills = () => {
     },
   ];
   return (
-    <div className="md:px-4 px-2 w-full min-h-screen flex space-y-8 md:space-y-0  flex-col justify-center items-center flex-1">
+    <div className="md:px-4 px-2 w-full  flex space-y-8 md:space-y-0  flex-col justify-center items-center flex-1">
       <UnderlinedText>
         <h1 className="text-[40px]" style={{ letterSpacing: "4px" }}>
           My Skills
         </h1>
       </UnderlinedText>
       <div className="flex flex-col items-center py-12 bg-gray-100">
-        <div className="flex justify-evenly flex-wrap gap-4 md:gap-6 w-full  px-4">
+        <div className="flex justify-evenly flex-wrap gap-4 md:gap-6 w-full  px-6 md:px-8">
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} />
           ))}

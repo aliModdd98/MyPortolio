@@ -2,7 +2,10 @@ import UnderlinedText from "../HeadLine/HeadLine";
 import img1 from "./../../assets/img1.jpg";
 const AboutMe = () => {
   return (
-    <div className="md:px-4 px-2 p-4 flex space-y-8 justify-between items-center flex-col py-8">
+    <div
+      id="about-section"
+      className="md:px-8 px-6 p-6 flex space-y-8 justify-between items-center flex-col py-8"
+    >
       <UnderlinedText>
         <h1 className="text-[40px]" style={{ letterSpacing: "4px" }}>
           About Me

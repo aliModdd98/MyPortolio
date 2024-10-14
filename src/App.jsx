@@ -1,25 +1,52 @@
+import { useRef } from "react";
 import "./App.css";
-import AboutMe from "./components/AboutMe/AboutMe";
-import { Contact } from "./components/Contact/Contact";
-import Hero from "./components/Hero/Hero";
-import Mouse from "./components/Mouse/Mouse";
-import NavBar from "./components/NavBar/NavBar";
 
+import Hero from "./components/Hero/Hero";
+import AboutMe from "./components/AboutMe/AboutMe";
+import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Resume from "./components/Resume/Resume";
-import Skills from "./components/Skills/Skills";
+import { Contact } from "./components/Contact/Contact";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const resumeRef = useRef(null);
+  const contactRef = useRef(null);
   return (
     <>
-      <Mouse />
-      <NavBar />
-      <Hero />
-      <AboutMe />
-      <Skills />
-      <Projects />
-      <Resume />
-      <Contact />
+      <NavBar
+        refs={{
+          heroRef,
+          aboutRef,
+          skillsRef,
+          projectsRef,
+          resumeRef,
+          contactRef,
+        }}
+      />
+      {/* Each section is now associated with a ref */}
+      <section ref={heroRef}>
+        <Hero />
+      </section>
+      <section ref={aboutRef}>
+        <AboutMe />
+      </section>
+      <section ref={skillsRef}>
+        <Skills />
+      </section>
+      <section ref={projectsRef}>
+        <Projects />
+      </section>
+      <section ref={resumeRef}>
+        <Resume />
+      </section>
+      <section ref={contactRef}>
+        <Contact />
+      </section>
     </>
   );
 }

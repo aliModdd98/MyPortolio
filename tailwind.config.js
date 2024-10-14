@@ -7,6 +7,7 @@ export default {
         primary: "#FC9D45",
         secondary: "#ffffff",
         gray: "#736F6F",
+        bgColor: "#0b192c",
       },
     },
   },

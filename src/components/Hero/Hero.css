@@ -1,0 +1,21 @@
+/* @keyframes flyin {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(50px) translateY(-50px);
+  }
+  50% {
+    transform: rotate(45) translateY(0);
+  }
+  75% {
+    transform: translateX(-50px) rotate(-50px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+} */
+
+.animate-[flyin] {
+  animation: flyin 2s linear infinite;
+}

@@ -13,9 +13,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   scrollbar-width: none;
-  background-color: "#F7F7F7";
-  /* background-color: gray; */
+  background-color: #0b192c; /* Dark navy blue that complements orange and white */
+  color: #ffffff; /* White text for good contrast */
 }
+
 /* For WebKit browsers like Chrome, Safari */
 ::-webkit-scrollbar {
   width: 10px;
