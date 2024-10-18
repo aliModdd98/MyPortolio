@@ -1,0 +1,29 @@
+/* .cardStyle {
+  position: relative;
+
+  isolation: isolate;
+}
+.cardStyle::before,
+.cardStyle::after {
+  content: "";
+  position: absolute;
+}
+.cardStyle::before {
+  width: 200%;
+  height: 200%;
+  background-image: conic-gradient(
+    orange 0deg,
+    trasparent 60deg,
+    orange 180deg,
+    transparent 240deg
+  );
+  inset: -50%;
+  z-index: 222;
+  animation: border 8s linear infinite;
+}
+
+@keyframes border {
+  to {
+    transform: rotateZ(-360deg);
+  }
+} */

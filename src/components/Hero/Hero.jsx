@@ -10,45 +10,22 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import "./Hero.css";
+
 const Hero = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
 
-  const texts = ["Front-end Developer", "Mobile Apps Developer"];
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    if (charIndex < texts[currentTextIndex].length) {
-      const timeoutId = setTimeout(() => {
-        setDisplayedText((prev) => prev + texts[currentTextIndex][charIndex]);
-        setCharIndex(charIndex + 1);
-      }, 100);
-      return () => clearTimeout(timeoutId);
-    } else {
-      const delayBeforeNext = setTimeout(() => {
-        setDisplayedText("");
-        setCharIndex(0);
-        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-      }, 1000);
-      return () => clearTimeout(delayBeforeNext);
-    }
-  }, [charIndex, texts, currentTextIndex]);
-
-  const textSpring = useSpring({
-    from: { opacity: 0, transform: "translateX(-100px)" },
-    to: { opacity: 1, transform: "translateX(0)" },
-    config: { tension: 200, friction: 20 },
-    delay: 200,
+  // Spring animations for pulsing and floating icons
+  const pulseAndFloatSpring = useSpring({
+    loop: { reverse: true }, // Create an infinite loop
+    to: [
+      { transform: "translateY(-10px) scale(1.2)" },
+      { transform: "translateY(0px) scale(1)" },
+    ],
+    from: { transform: "translateY(0px) scale(1)" },
+    config: { duration: 1500 }, // Control the speed of the animation
   });
 
-  const imageSpring = useSpring({
-    from: { opacity: 0, transform: "translateY(100px)" },
-    to: { opacity: 1, transform: "translateY(0)" },
-    config: { tension: 150, friction: 25 },
-    delay: 400,
-  });
-
+  // Handle scroll past event for showing the scroll-to-top button
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight =
@@ -61,6 +38,7 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -68,19 +46,18 @@ const Hero = () => {
     });
   };
 
+  // Spring animation for the scroll-to-top arrow with a smoother transition
   const arrowSpring = useSpring({
     opacity: isScrolledPast ? 1 : 0,
-    transform: isScrolledPast ? "translateY(0)" : "translateY(100px)",
-    config: { tension: 250, friction: 20 },
+    transform: isScrolledPast ? "translateY(0)" : "translateY(20px)",
+    config: { tension: 210, friction: 20 },
   });
 
   return (
-    <div id="hero-section" className="min-h-screen">
+    <div id="hero-section">
       <div className="md:px-4 px-2 w-full flex space-y-8 md:space-y-0 md:flex-row flex-col justify-center md:justify-between flex-wrap h-full flex-1 py-8">
-        <animated.div
-          style={textSpring}
-          className="md:w-1/2 w-full p-6 md:p-8 flex justify-center items-start flex-col"
-        >
+        {/* Text Section */}
+        <animated.div className="md:w-1/2 w-full p-6 md:p-8 flex justify-center items-start flex-col">
           <h1 className="text-[25px] md:text-[30px] text-primary">
             Hello, I’m
           </h1>
@@ -90,12 +67,6 @@ const Hero = () => {
           >
             Ali Hamza <br /> Mohammad
           </h1>
-          <div
-            className="text-[25px] md:text-[30px] text-primary"
-            style={{ minHeight: "40px", minWidth: "250px" }}
-          >
-            <animated.h1 className="inline-block">{displayedText}</animated.h1>
-          </div>
           <h2 className="text-lg md:text-xl font-bold text-center flex items-center my-8 relative">
             <BiSolidQuoteAltLeft className="w-8 h-8 text-primary absolute left-0 -top-3" />
             <span
@@ -114,17 +85,21 @@ const Hero = () => {
           </button>
         </animated.div>
 
-        <animated.div
-          style={imageSpring}
-          className="md:w-1/2 w-full flex justify-evenly flex-col items-center relative mt-10 md:mt-0"
-        >
-          {" "}
+        {/* Image Section with Animated Icons */}
+        <animated.div className="md:w-1/2 w-full flex justify-evenly flex-col items-center relative mt-10 md:mt-0">
           <div className="flex justify-between items-center w-56 md:w-80 mb-16 md:mb-2">
-            {" "}
-            <FaReact className=" text-blue-500 text-3xl " />
-            <FaHtml5 className=" text-orange-500 text-3xl " />
-            <FaCss3Alt className=" text-blue-700 text-3xl " />
-            <FaJsSquare className=" text-yellow-500 text-3xl " />
+            <animated.div style={pulseAndFloatSpring}>
+              <FaReact className=" text-blue-500 text-3xl " />
+            </animated.div>
+            <animated.div style={pulseAndFloatSpring}>
+              <FaHtml5 className=" text-orange-500 text-3xl " />
+            </animated.div>
+            <animated.div style={pulseAndFloatSpring}>
+              <FaCss3Alt className=" text-blue-700 text-3xl " />
+            </animated.div>
+            <animated.div style={pulseAndFloatSpring}>
+              <FaJsSquare className=" text-yellow-500 text-3xl " />
+            </animated.div>
           </div>
           <div className="relative flex justify-center items-center">
             <div className="w-56 h-56 md:w-80 md:h-80 rounded-full border-4 border-primary p-2 flex justify-center items-center relative">
@@ -133,12 +108,12 @@ const Hero = () => {
                 className="rounded-full w-full h-full object-cover"
                 alt="Hero"
               />
-              {/* Icons surrounding the image in one line */}
             </div>
           </div>
         </animated.div>
       </div>
 
+      {/* Scroll to top arrow */}
       <animated.div
         style={arrowSpring}
         className="fixed bottom-8 right-6 z-[9999]"

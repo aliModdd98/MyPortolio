@@ -1,8 +1,8 @@
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-
+import "./Card.css";
 const ProjectCard = ({ project }) => {
   return (
-    <div className="relative group overflow-hidden rounded-sm shadow-lg w-64 lg:w-96 h-full flex flex-col cursor-pointer">
+    <div className="relative cardStyle group overflow-hidden rounded-lg shadow-lg w-64 lg:w-96 h-full flex flex-col cursor-pointer">
       {/* Project Image */}
       <img
         src={project.image}
