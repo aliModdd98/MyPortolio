@@ -1,21 +1,31 @@
-/* @keyframes flyin {
+/* @keyframes rotate-around {
   0% {
-    transform: translateX(0) translateY(0);
-  }
-  25% {
-    transform: translateX(50px) translateY(-50px);
-  }
-  50% {
-    transform: rotate(45) translateY(0);
-  }
-  75% {
-    transform: translateX(-50px) rotate(-50px);
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
   }
   100% {
-    transform: translateX(0) translateY(0);
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
   }
-} */
-
-.animate-[flyin] {
-  animation: flyin 2s linear infinite;
 }
+.icon-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icon-right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.icon-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icon-left {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+} */

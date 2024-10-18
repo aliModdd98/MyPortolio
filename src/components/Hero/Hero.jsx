@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import "./Hero.css";
-
 const Hero = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
 
@@ -19,7 +18,6 @@ const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
 
-  // Typing animation for text
   useEffect(() => {
     if (charIndex < texts[currentTextIndex].length) {
       const timeoutId = setTimeout(() => {
@@ -37,7 +35,6 @@ const Hero = () => {
     }
   }, [charIndex, texts, currentTextIndex]);
 
-  // Animation for text
   const textSpring = useSpring({
     from: { opacity: 0, transform: "translateX(-100px)" },
     to: { opacity: 1, transform: "translateX(0)" },
@@ -45,7 +42,6 @@ const Hero = () => {
     delay: 200,
   });
 
-  // Animation for image
   const imageSpring = useSpring({
     from: { opacity: 0, transform: "translateY(100px)" },
     to: { opacity: 1, transform: "translateY(0)" },
@@ -53,7 +49,6 @@ const Hero = () => {
     delay: 400,
   });
 
-  // Scroll detection for "back to top" button
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight =
@@ -66,7 +61,6 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -74,43 +68,15 @@ const Hero = () => {
     });
   };
 
-  // Animation for "back to top" arrow
   const arrowSpring = useSpring({
     opacity: isScrolledPast ? 1 : 0,
     transform: isScrolledPast ? "translateY(0)" : "translateY(100px)",
     config: { tension: 250, friction: 20 },
   });
 
-  // Icon circular animation
-  // const radius = 180; // Circle radius of 180px
-  // const icons = [
-  //   { Icon: FaReact, color: "text-blue-500", duration: 5000 },
-  //   { Icon: FaHtml5, color: "text-orange-500", duration: 4000 },
-  //   { Icon: FaCss3Alt, color: "text-blue-600", duration: 6000 },
-  //   { Icon: FaJsSquare, color: "text-yellow-500", duration: 7000 },
-  // ];
-
-  // const iconSpring = (index) => {
-  //   const angleOffset = (index / icons.length) * 2 * Math.PI; // Evenly space icons around the circle
-  //   return useSpring({
-  //     loop: true,
-  //     to: async (next) => {
-  //       while (true) {
-  //         for (let t = 0; t < 360; t += 1) {
-  //           const angle = (t * Math.PI) / 180; // Convert degrees to radians
-  //           const x = radius * Math.cos(angle + angleOffset); // X position based on angle
-  //           const y = radius * Math.sin(angle + angleOffset); // Y position based on angle
-  //           await next({ transform: `translate(${x}px, ${y}px)` });
-  //         }
-  //       }
-  //     },
-  //     config: { duration: icons[index].duration, precision: 0.1 },
-  //   });
-  // };
-
   return (
-    <div id="hero-section" className="relative">
-      <div className="md:px-4 px-2 w-full flex space-y-8 md:space-y-0 md:flex-row flex-col justify-center md:justify-between flex-1 py-8">
+    <div id="hero-section" className="min-h-screen">
+      <div className="md:px-4 px-2 w-full flex space-y-8 md:space-y-0 md:flex-row flex-col justify-center md:justify-between flex-wrap h-full flex-1 py-8">
         <animated.div
           style={textSpring}
           className="md:w-1/2 w-full p-6 md:p-8 flex justify-center items-start flex-col"
@@ -150,30 +116,26 @@ const Hero = () => {
 
         <animated.div
           style={imageSpring}
-          className="md:w-1/2 w-full flex justify-center items-center relative mt-10 md:mt-0"
+          className="md:w-1/2 w-full flex justify-evenly flex-col items-center relative mt-10 md:mt-0"
         >
-          <div className="w-64 md:w-96 z-[90] h-52 md:h-72 bg-primary absolute left-[50%] translate-x-[-50%] bottom-0 rounded-tl-full rounded-tr-full"></div>
-          <img
-            src={img1}
-            className="w-56 md:w-80 z-[100] h-auto max-w-md md:max-w-full object-cover rounded-md absolute bottom-0"
-            alt="Hero"
-          />
-
-          {/* Icons Flying in a Circle */}
-          {/* <div className="absolute top-[150px] left-[50%] transform translate-x-[-50%]">
-            {icons.map((item, index) => {
-              const springStyle = iconSpring(index);
-              return (
-                <animated.div
-                  key={index}
-                  style={springStyle}
-                  className={`absolute ${item.color}`}
-                >
-                  <item.Icon className="w-8 h-8" />
-                </animated.div>
-              );
-            })}
-          </div> */}
+          {" "}
+          <div className="flex justify-between items-center w-56 md:w-80 mb-16 md:mb-2">
+            {" "}
+            <FaReact className=" text-blue-500 text-3xl " />
+            <FaHtml5 className=" text-orange-500 text-3xl " />
+            <FaCss3Alt className=" text-blue-700 text-3xl " />
+            <FaJsSquare className=" text-yellow-500 text-3xl " />
+          </div>
+          <div className="relative flex justify-center items-center">
+            <div className="w-56 h-56 md:w-80 md:h-80 rounded-full border-4 border-primary p-2 flex justify-center items-center relative">
+              <img
+                src={img1}
+                className="rounded-full w-full h-full object-cover"
+                alt="Hero"
+              />
+              {/* Icons surrounding the image in one line */}
+            </div>
+          </div>
         </animated.div>
       </div>
 
